@@ -10,7 +10,7 @@ java -jar currencyExchange-1.0-RELEASE.jar
 ```
 
 ## Example Requests
-- To convert from EUR to USD: `\exchange\1.00?from=EUR&to=USD
+- To convert from EUR to USD: `\exchange\1.00?from=EUR&to=USD`
 - Available currency identifiers:
   * USD
   * EUR
