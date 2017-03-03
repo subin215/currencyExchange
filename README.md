@@ -10,7 +10,11 @@ java -jar currencyExchange-1.0-RELEASE.jar
 ```
 
 ## Example Requests
-- To convert from EUR to USD: `\exchange\1.00?from=EUR&to=USD`
+- To convert from EUR to USD: `/exchange/1.00?from=EUR&to=USD`
+ * Sample Result:
+ ``` JSON
+ {"fromCurrency":"EUR","toCurrency":"USD","fromValue":1.0,"exchangedValue":1.0614}
+ ```
 - Available currency identifiers:
   * USD
   * EUR
