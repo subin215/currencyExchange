@@ -1,4 +1,4 @@
-package org.stylight.controllers;
+package stylight.exchangeAPI.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.stylight.models.ExchangeResult;
-import org.stylight.services.ExchangeService;
+import stylight.exchangeAPI.models.ExchangeResult;
+import stylight.exchangeAPI.services.ExchangeService;
 
 /**
+ * REST Controller for handling exchange calls.
+ *
  * Created by Subin Sapkota on 3/3/17.
  */
 @RestController
@@ -30,6 +32,7 @@ public class ExchangeRestController {
 
   /**
    * REST Endpoint controller for GET currency exchange results based on parameters.
+   *
    * @param fromValue - double value of currency to be converted
    * @param fromCurr - String of currency to convert - Can be "USD", "EUR" or "JPY"
    * @param toCurr - String of currency to be converted to - Can be "USD", "EUR" or "JPY"
@@ -45,13 +48,15 @@ public class ExchangeRestController {
     if (!(fromCurr.equalsIgnoreCase("USD") || fromCurr.equalsIgnoreCase("JPY")
         || fromCurr.equalsIgnoreCase("EUR"))) {
       logger.error("INVALID! FROM Currency parameter didn't match USD, JPY, or EUR");
-      return new ResponseEntity<>("INVALID PARAMETER: FROM (from=) parameter mus be USD, EUR, or JPY only.",
+      return new ResponseEntity<>(
+          "INVALID PARAMETER: FROM (from=) parameter mus be USD, EUR, or JPY only.",
           HttpStatus.BAD_REQUEST);
     }
     if (!(toCurr.equalsIgnoreCase("USD") || toCurr.equalsIgnoreCase("JPY")
         || toCurr.equalsIgnoreCase("EUR"))) {
       logger.error("INVALID! TO Currency parameter didn't match USD, JPY, or EUR");
-      return new ResponseEntity<>("INVALID PARAMETER: TO (to=) parameter mus be USD, EUR, or JPY only.",
+      return new ResponseEntity<>(
+          "INVALID PARAMETER: TO (to=) parameter mus be USD, EUR, or JPY only.",
           HttpStatus.BAD_REQUEST);
     }
 

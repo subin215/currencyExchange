@@ -1,4 +1,4 @@
-package org.stylight.services.implementation;
+package stylight.exchangeAPI.services.implementation;
 
 import java.io.IOException;
 import org.apache.http.client.ResponseHandler;
@@ -9,10 +9,12 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import org.stylight.models.ExchangeResult;
-import org.stylight.services.ExchangeService;
+import stylight.exchangeAPI.models.ExchangeResult;
+import stylight.exchangeAPI.services.ExchangeService;
 
 /**
+ * Implementation of ExchangeService. Business Logic of currency exchange stays here.
+ *
  * Created by Subin Sapkota on 3/3/17.
  */
 @Service
@@ -20,6 +22,14 @@ public class ExchangeServiceImplementation implements ExchangeService {
 
   private final Logger logger = LoggerFactory.getLogger(ExchangeServiceImplementation.class);
 
+  /**
+   * Implementation of calculateCurrencyExchange.
+   *
+   * @param fromValue - double value of currency to be converted
+   * @param fromCurr - String of currency to convert - Can be "USD", "EUR" or "JPY"
+   * @param toCurr - String of currency to be converted to - Can be "USD", "EUR" or "JPY"
+   * @return - ExchangeResult - if successful. null - if failed.
+   */
   @Override
   public ExchangeResult calculateCurrencyExchange(double fromValue, String fromCurr,
       String toCurr) {
@@ -28,7 +38,7 @@ public class ExchangeServiceImplementation implements ExchangeService {
       logger.error("INVALID! Null FROM currency specified.");
       return null;
     }
-    if(toCurr == null){
+    if (toCurr == null) {
       logger.error("INVALID! Null TO currency specified.");
       return null;
     }
